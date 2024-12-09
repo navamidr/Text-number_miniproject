@@ -9,6 +9,11 @@
 </head>
 <body>
     <div class="container">
+        {% if messages %}           
+            {% for message in messages %}
+            {{ message }}
+            {% endfor %}            
+        {% endif %}
         <h2>Text-to-Number Conversion App</h2>
         <form id="form">
     

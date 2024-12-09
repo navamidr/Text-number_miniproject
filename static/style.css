@@ -6,6 +6,7 @@ body {
     align-items: center;
     height: 100vh;
 }
+
 .container {
     background: #dfa9a9;
     padding: 20px;
@@ -14,25 +15,55 @@ body {
     width: 170%;
     height: 25%; 
     max-width: 450px; 
+    
 }
+.page{
+    background:rgb(224, 186, 186);
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    width: 170%;
+    height: 60%;
+    max-width: 450px; 
+    border-color: black;
+    border: 10%;
+}
+.container-page {
+    background:rgb(165, 140, 140);
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    width: 170%;
+    height: 45%; 
+    max-width: 450px; 
+}
+.signup-link {
+    color:white;
+    font-family: 'Courier New', Courier, monospace;
+    font-size:large;
+}
+
 input {
     width: 50%;
     /* height: 10%; */
     padding: 10px; 
     margin-top: 6px;
     margin-bottom: 10px;
-    border: 1px solid #867878;
+    border: 1px solid #0f0a0a;
     border-radius: 5px;
 }
 button {
-    margin-top:10px;
+    margin-top:20px;
     cursor: pointer;
     padding: 5px;
     width: 100px;
+    border-radius: 5px;
+    font-size: medium;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 button:hover {
-    background-color: #83b3af;
+    background-color: #2b6142;
 }
 
  .error {
@@ -44,11 +75,13 @@ button:hover {
     color: rgb(26, 32, 26);
     margin-top: 10px;
 } 
-h2{
+h2.h1{
     font-family: 'Times New Roman', Times, serif;
-    color:rgb(61, 50, 60);
+    color: rgb(17, 17, 17);
+    font-size: 250%;
 } 
 h3 {
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     color: rgb(61, 50, 60);
+    /* font-size: 50%; */
 }
