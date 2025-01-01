@@ -6,10 +6,15 @@ from word2number import w2n
 import json
 from django.contrib import messages
 from .forms import RegistrationForm, LoginForm
+from django.contrib.sessions.backends.db import SessionStore
+from django.contrib.sessions.models import Session
+# from django.contrib.auth import authenticate, login, logout
+# from django.contrib.auth.decorators import login_required
 
 # # Create your views here.
 # # def hello(request):
 # #     return HttpResponse("hello")
+
 
 def print(request):
      return render(request,'index.html')
@@ -21,7 +26,11 @@ def print(request):
 # def register(request):
 #     return render(request,'register.html')
 
+
 def convert(request):
+    if 'user_id' not in request.session:           # session chechking user id
+        return JsonResponse({"error": "Please login"}, status=401)
+
     if request.method == "POST":
         data = json.loads(request.body)
         text= data.get('text','').strip()
@@ -49,6 +58,9 @@ def register(request):
             password = form.cleaned_data['password']
             user = User.objects.create(username=username, email=email, password=password)
             user.save()
+
+            
+
             messages.success(request, 'Registration successful,log in...')
             return redirect('login')  
     else:
@@ -68,6 +80,7 @@ def login(request):
             try:
                 user = User.objects.get(username=username)
                 if user.password == password: 
+                    request.session['user_id'] = user.id           #create a session
                     messages.success(request, 'login successful')
                     return redirect('index')  
                 else:
@@ -81,5 +94,13 @@ def login(request):
         form = LoginForm()
 
     return render(request, 'login.html', {'form': form})
+
+# logout view 
+
+def logout(request):
+    if 'user_id' in request.session:
+        del request.session['user_id']
+    messages.success(request, 'You have been logged out.')
+    return redirect('login')
 
 
